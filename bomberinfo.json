@@ -1,0 +1,23 @@
+{
+    "updates": {
+        "important": false,
+        "allowDirect": false,
+        "description": {
+            "_": ""
+        },
+        "directUrl": "",
+        "onlyDirect": false,
+        "telegramUrl": "",
+        "versionCode": 10
+    },
+    "stories": [
+        {
+            "preview": "https://i.imgur.com/UeFqXhB.jpeg",
+            "pages": [
+                {
+                    "image": "https://i.imgur.com/UeFqXhB.jpeg"
+                }
+            ]
+        }
+    ]
+}
