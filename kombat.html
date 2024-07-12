@@ -71,7 +71,13 @@
         let count = 0;
         const fenny = document.getElementById('fenny');
         const counter = document.getElementById('counter');
-        
+
+        // загрузка значения счётчика из localStorage
+        if (localStorage.getItem('counterValue')) {
+            count = parseInt(localStorage.getItem('counterValue'));
+            counter.textContent = count;
+        }
+
         // инициализация particles.js
         particlesJS('particles-js', {
             particles: {
@@ -216,6 +222,9 @@
 
             count++;
             counter.textContent = count;
+
+            // Сохранение значения счётчика в localStorage
+            localStorage.setItem('counterValue', count);
 
             // Добавляем класс анимации к счетчику
             counter.classList.add('animate');
