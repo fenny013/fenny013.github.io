@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кликер фенни</title>
     <style>
-        input {outline: 0 !important;}
         body {
             display: flex;
             justify-content: center;
@@ -72,9 +71,7 @@
         let count = 0;
         const fenny = document.getElementById('fenny');
         const counter = document.getElementById('counter');
-
-        const isMobile = navigator.userAgentData.mobile;
-
+        
         // инициализация particles.js
         particlesJS('particles-js', {
             particles: {
@@ -216,10 +213,10 @@
                 },
                 retina_detect: true
             });
-            
+
             count++;
-            counter.textContent = count;=
-            
+            counter.textContent = count;
+
             // Добавляем класс анимации к счетчику
             counter.classList.add('animate');
 
