@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер фенни</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #333;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* чтобы скрыть выход частиц за пределы контейнера */
+        }
+        #fenny {
+            position: relative;
+            z-index: 1; /* устанавливаем изображение фенни над частицами */
+            width: 200px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #fenny:active {
+            transform: scale(0.9); /* уменьшаем размер при активации */
+        }
+        #counter {
+            font-size: 3em;
+            margin-top: 20px;
+            transition: color 0.2s;
+        }
+        #counter.animate {
+            color: #ff6347;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        /* стили для частиц */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Кликер фенни</h1>
+        <img id="fenny" src="sticker.png" alt="фенни">
+        <div id="counter">0</div>
+        <!-- контейнер для частиц -->
+        <div id="particles-js"></div>
+    </div>
+    <!-- подключаем particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        let count = 0;
+        const fenny = document.getElementById('fenny');
+        const counter = document.getElementById('counter');
+
+        // инициализация particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 30, // количество частиц
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ff6347' // цвет частиц
+                },
+                shape: {
+                    type: 'circle', // форма частиц
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.7,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 10, // размер частиц
+                    random: true
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 3, // скорость движения частиц
+                    direction: 'bottom', // направление движения частиц
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: false
+                    },
+                    onclick: {
+                        enable: false
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // добавляем обработчик клика на фенни
+        fenny.addEventListener('click', (event) => {
+            // создаем частицы по координатам клика
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 30, // количество частиц
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#ff6347' // цвет частиц
+                    },
+                    shape: {
+                        type: 'circle', // форма частиц
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        },
+                        polygon: {
+                            nb_sides: 5
+                        }
+                    },
+                    opacity: {
+                        value: 0.7,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 10, // размер частиц
+                        random: true
+                    },
+                    line_linked: {
+                        enable: false
+                    },
+                    move: {
+                        enable: true,
+                        speed: 3, // скорость движения частиц
+                        direction: 'bottom', // направление движения частиц
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: false
+                        },
+                        onclick: {
+                            enable: false
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+
+            count++;
+            counter.textContent = count;
+
+            // Добавляем класс анимации к счетчику
+            counter.classList.add('animate');
+
+            // Удаляем класс анимации через 200ms, чтобы можно было повторно его добавить
+            setTimeout(() => {
+                counter.classList.remove('animate');
+            }, 200);
+        });
+    </script>
+</body>
+</html>
