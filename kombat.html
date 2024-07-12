@@ -72,6 +72,8 @@
         const fenny = document.getElementById('fenny');
         const counter = document.getElementById('counter');
 
+        const isMobile = navigator.userAgentData.mobile;
+
         // инициализация particles.js
         particlesJS('particles-js', {
             particles: {
@@ -213,10 +215,14 @@
                 },
                 retina_detect: true
             });
-
-            count++;
-            counter.textContent = count;
-
+            
+            if(isMobile) {
+                count++;
+                counter.textContent = count;
+            } else {
+                counter.textContent = "Игра возможна только на мобильных устройствах.";
+            }
+            
             // Добавляем класс анимации к счетчику
             counter.classList.add('animate');
 
