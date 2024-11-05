@@ -1,0 +1,253 @@
+/* Подключение шрифта Joystix Monospace */
+@font-face {
+  font-family: 'Joystix';
+  src: url('/fonts/joystix monospace.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #1d1d1d;
+  color: #e0e0e0; /* Легкий серый текст */
+  image-rendering: pixelated;
+  line-height: 1.6;
+  cursor: none; /* Скрыть стандартный курсор для всего body */
+}
+
+/* Кастомный курсор */
+.custom-cursor {
+  width: 20px; /* Начальный размер курсора */
+  height: 20px;
+  background-color: #a370f7; /* Фиолетовый */
+  border-radius: 50%; /* Круглая форма */
+  position: fixed;
+  pointer-events: none; /* Не блокирует клики */
+  transform: translate(-50%, -50%); /* Центрирование курсора */
+  transition: transform 0.15s ease, background-color 0.15s ease; /* Плавный переход */
+  z-index: 1000; /* Слой над остальными элементами */
+}
+
+/* Увеличение курсора при наведении на кнопки */
+.cta-button:hover ~ .custom-cursor,
+.contact-info a:hover ~ .custom-cursor {
+  transform: translate(-50%, -50%) scale(1.5); /* Центрирование при увеличении */
+  background-color: #8a50d8; /* Изменение цвета */
+}
+
+/* Скрыть стандартный курсор на кнопках */
+.cta-button,
+.contact-info a {
+  cursor: none; /* Скрыть стандартный курсор */
+}
+
+/* Цвет выделения текста */
+::selection {
+  background-color: #a370f7; /* Фиолетовый фон */
+  color: #ffffff; /* Белый текст */
+}
+
+::-moz-selection {
+  background-color: #a370f7; /* Фиолетовый фон для Firefox */
+  color: #ffffff; /* Белый текст */
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5) translateX(-25%) translateY(-25%);
+  background-color: rgba(221, 195, 255, 0.82);
+}
+
+h2 {
+  font-family: 'Joystix', cursive; /* Используйте шрифт Joystix для заголовков */
+}
+
+header {
+  background: url('/img/wallpaper_minecraft_burberry_2560x1440.png') no-repeat center center;
+  background-size: cover;
+  padding: 60px 0;
+  text-align: center;
+  border-bottom: 3px solid #a370f7; /* Сиреневая граница */
+  transition: transform 0.3s ease; /* Плавный переход */
+}
+
+h1 {
+  font-size: 3.5em;
+  color: #333333; /* Более тёмный текст */
+  text-shadow: 2px 2px #999999, 3px 3px #5b4d91; /* Тень с фиолетовым оттенком */
+  transition: transform 0.3s ease; /* Плавный переход */
+}
+
+header p {
+  font-size: 1.4em;
+  margin: 15px 0;
+  color: #2c2c2c; /* Светло-серый цвет для текста */
+  background-color: rgba(206, 156, 241, 0.78); /* Светлый фон */
+  padding: 10px 15px; /* Дополнительное пространство вокруг текста */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Нежная тень для объема */
+  transition: transform 0.3s ease; /* Плавный переход */
+}
+
+/* Анимация для заголовков */
+h1:hover {
+  transform: scale(1.1); /* Увеличение заголовка при наведении */
+}
+
+h2:hover {
+  color: #d8a3ff;
+}
+
+/* Кнопки */
+.cta-button {
+  background-color: #a370f7;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 3px solid #8a50d8; /* Тёмно-сиреневая граница */
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+
+.cta-button:hover {
+  background-color: #8a50d8; /* Тёмно-сиреневый при наведении */
+  color: #fff;
+  border-color: #6c3cab;
+  transform: scale(1.1); /* Увеличение кнопки при наведении */
+}
+
+/* About Section */
+.about {
+  padding: 30px;
+  background-color: #2a2a2a;
+  border: 3px dashed #a370f7; /* Сиреневая пунктирная граница */
+  margin: 20px 0;
+  transition: transform 0.3s ease; /* Плавный переход */
+}
+
+
+h2 {
+  font-size: 2.2em;
+  color: #a370f7;
+  text-shadow: 1px 1px 0px #000;
+}
+
+/* Projects Section */
+.projects {
+  padding: 30px;
+  background-color: #333;
+  margin: 20px 0;
+}
+
+.project {
+  background-color: #444;
+  padding: 20px;
+  margin: 15px 0;
+  border: 3px solid #a370f7;
+  box-shadow: 0px 0px 5px 1px #a370f7;
+  transition: transform 0.3s ease; /* Плавный переход */
+}
+
+.project:hover {
+  transform: scale(1.02); /* Увеличение проекта при наведении */
+}
+
+/* Technologies Section */
+.technologies {
+  padding: 30px;
+  background-color: #2a2a2a;
+  border: 3px solid #a370f7;
+  margin: 20px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 8px 0;
+  font-size: 1.1em;
+}
+
+/* Contact Section */
+.contact {
+  padding: 30px;
+  background-color: #333;
+  border-top: 3px dotted #a370f7;
+  margin: 20px 0;
+}
+
+.contact-info a {
+  color: #a370f7;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 2px solid #a370f7;
+  transition: all 0.3s ease;
+  font-size: 1em;
+}
+
+.contact-info a:hover {
+  background-color: #a370f7;
+  color: #000;
+  border-color: #8a50d8;
+}
+
+/* Footer Section */
+footer {
+  background-color: #222;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 3px solid #a370f7;
+}
+
+footer p {
+  margin: 0;
+  color: #bbb;
+  font-size: 0.9em;
+}
+
+/* Error Page Styles */
+.error-header {
+  background: url('/img/wallpaper_minecraft_burberry_2560x1440.png') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 3px solid #a370f7;
+}
+
+.error-header h1 {
+  font-size: 6em;
+  color: #a370f7;
+  text-shadow: 3px 3px #333333, 4px 4px #5b4d91;
+  font-family: 'Joystix', cursive;
+  animation: bounce 1s infinite alternate;
+}
+
+.error-header p {
+  font-size: 1.5em;
+  color: #ffffff;
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+}
+
+.cta-button {
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+/* Animation for 404 text */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
