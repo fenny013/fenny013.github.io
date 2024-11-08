@@ -4,6 +4,97 @@
   src: url('/fonts/joystix monospace.ttf') format('truetype');
 }
 
+/* Стили для мобильных устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  header {
+    padding: 40px 0;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  header p {
+    font-size: 1.2em;
+    padding: 8px 12px;
+  }
+
+  .cta-button {
+    padding: 8px 15px;
+    font-size: 0.8em;
+  }
+
+  /* Sections */
+  .about, .projects, .technologies, .contact {
+    padding: 20px;
+    margin: 15px 0;
+  }
+
+  .project {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
+}
+
+/* Стили для мобильных устройств с шириной экрана до 480px */
+@media (max-width: 480px) {
+  header {
+    padding: 30px 0;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  .cta-button {
+    font-size: 0.75em;
+    padding: 6px 12px;
+  }
+
+  .about, .projects, .technologies, .contact {
+    padding: 15px;
+  }
+
+  .contact-info a {
+    font-size: 0.9em;
+    padding: 6px 10px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  .project {
+    padding: 12px;
+  }
+
+  footer p {
+    font-size: 0.75em;
+  }
+
+  /* Адаптация кастомного курсора */
+  .custom-cursor {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,17 +110,29 @@ body {
   cursor: none; /* Скрыть стандартный курсор для всего body */
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+
 /* Кастомный курсор */
 .custom-cursor {
-  width: 20px; /* Начальный размер курсора */
+  width: 20px;
   height: 20px;
-  background-color: #a370f7; /* Фиолетовый */
-  border-radius: 50%; /* Круглая форма */
+  background-color: #a370f7;
+  border-radius: 50%;
   position: fixed;
-  pointer-events: none; /* Не блокирует клики */
-  transform: translate(-50%, -50%); /* Центрирование курсора */
-  transition: transform 0.15s ease, background-color 0.15s ease; /* Плавный переход */
-  z-index: 1000; /* Слой над остальными элементами */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Увеличено время плавности */
+  z-index: 1000;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5) translate(-25%, -25%);
+  background-color: rgba(221, 195, 255, 0.82);
 }
 
 /* Увеличение курсора при наведении на кнопки */
@@ -47,28 +150,25 @@ body {
 
 /* Цвет выделения текста */
 ::selection {
-  background-color: #a370f7; /* Фиолетовый фон */
-  color: #ffffff; /* Белый текст */
+  background-color: #ffffff; /* Фиолетовый фон */
+  color: #000000; /* Белый текст */
 }
 
 ::-moz-selection {
-  background-color: #a370f7; /* Фиолетовый фон для Firefox */
-  color: #ffffff; /* Белый текст */
-}
-
-.custom-cursor.hover {
-  transform: scale(1.5) translateX(-25%) translateY(-25%);
-  background-color: rgba(221, 195, 255, 0.82);
+  background-color: #ffffff; /* Фиолетовый фон */
+  color: #000000; /* Белый текст */
 }
 
 h2 {
-  font-family: 'Joystix', cursive; /* Используйте шрифт Joystix для заголовков */
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  font-size: smaller;
 }
 
 header {
   background: url('/img/wallpaper_minecraft_burberry_2560x1440.png') no-repeat center center;
   background-size: cover;
-  padding: 60px 0;
+  padding: 100px 0;
   text-align: center;
   border-bottom: 3px solid #a370f7; /* Сиреневая граница */
   transition: transform 0.3s ease; /* Плавный переход */
@@ -76,8 +176,8 @@ header {
 
 h1 {
   font-size: 3.5em;
-  color: #333333; /* Более тёмный текст */
-  text-shadow: 2px 2px #999999, 3px 3px #5b4d91; /* Тень с фиолетовым оттенком */
+  color: #2a0d3e; /* Более тёмный текст */
+  text-shadow: 1px 1px #5b4d91; /* Тень с фиолетовым оттенком */
   transition: transform 0.3s ease; /* Плавный переход */
 }
 
