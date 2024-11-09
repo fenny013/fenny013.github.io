@@ -1,99 +1,36 @@
-/* Подключение шрифта Joystix Monospace */
-@font-face {
-  font-family: 'Joystix';
-  src: url('/fonts/joystix monospace.ttf') format('truetype');
-}
-
-/* Стили для мобильных устройств с шириной экрана до 768px */
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;
-    padding: 0 10px;
+  body > * {
+    display: none;
   }
 
-  header {
-    padding: 40px 0;
-  }
-
-  h1 {
-    font-size: 2.5em;
-  }
-
-  header p {
-    font-size: 1.2em;
-    padding: 8px 12px;
-  }
-
-  .cta-button {
-    padding: 8px 15px;
-    font-size: 0.8em;
-  }
-
-  /* Sections */
-  .about, .projects, .technologies, .contact {
+  body::before {
+    content: "This site is unavailable on mobile devices. Please access it from a desktop.";
+    display: block;
+    text-align: center;
     padding: 20px;
-    margin: 15px 0;
-  }
-
-  .project {
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 1.8em;
-  }
-
-  footer p {
-    font-size: 0.8em;
+    font-size: 1.2em;
+    color: #2a0d3e; /* Более тёмный текст */
+    text-shadow: 1px 1px #5b4d91; /* Тень с фиолетовым оттенком */
+    background-image: url('/img/wallpaper_minecraft_burberry_2560x1440.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-/* Стили для мобильных устройств с шириной экрана до 480px */
-@media (max-width: 480px) {
-  header {
-    padding: 30px 0;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  header p {
-    font-size: 1em;
-  }
-
-  .cta-button {
-    font-size: 0.75em;
-    padding: 6px 12px;
-  }
-
-  .about, .projects, .technologies, .contact {
-    padding: 15px;
-  }
-
-  .contact-info a {
-    font-size: 0.9em;
-    padding: 6px 10px;
-  }
-
-  h2 {
-    font-size: 1.6em;
-  }
-
-  .project {
-    padding: 12px;
-  }
-
-  footer p {
-    font-size: 0.75em;
-  }
-
-  /* Адаптация кастомного курсора */
-  .custom-cursor {
-    width: 15px;
-    height: 15px;
-  }
+body {
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Standalone support */
 }
+.header, .about, .cta-button {
+  user-select: none;
+}
+
 
 * {
   margin: 0;
@@ -109,6 +46,65 @@ body {
   line-height: 1.6;
   cursor: none; /* Скрыть стандартный курсор для всего body */
 }
+
+.language-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.language-switcher button {
+  background: #a370f7;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  cursor: none;
+  font-family: 'Press Start 2P', cursive;
+  margin: 0 5px;
+}
+.language-switcher button:hover {
+  background: #8a50d8;
+  color: #fff;
+}
+
+.language-switcher:hover ~ .custom-cursor,
+.language-switcher button:hover ~ .custom-cursor {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: rgba(221, 195, 255, 0.82);
+}
+
+#animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Не мешает кликам на другие элементы */
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.ripple-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(219, 197, 255, 0.7); /* Цвет и прозрачность обводки */
+  border-radius: 50%;
+  transform: scale(1);
+  animation: ripple-animation 0.2s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    border: 2px solid rgb(42, 13, 62); /* Цвет и прозрачность обводки */
+    transform: scale(8); /* Радиус увеличения */
+    opacity: 0; /* Исчезает */
+  }
+}
+
+
 
 @media (hover: none) and (pointer: coarse) {
   .custom-cursor {
@@ -161,8 +157,12 @@ body {
 
 h2 {
   font-family: 'Press Start 2P', cursive;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: smaller;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 header {
@@ -175,10 +175,15 @@ header {
 }
 
 h1 {
-  font-size: 3.5em;
-  color: #2a0d3e; /* Более тёмный текст */
-  text-shadow: 1px 1px #5b4d91; /* Тень с фиолетовым оттенком */
-  transition: transform 0.3s ease; /* Плавный переход */
+  -webkit-text-stroke: 2px #2c2c2c;
+  color: #ac78cc;
+  text-shadow:
+    -2px -2px 0 #2c2c2c,
+    -2px 2px 0 #2c2c2c,
+    2px -2px 0 #2c2c2c,
+    2px 2px 0 #2c2c2c;
+  font-size: 60px;
+  transition: transform 0.3s ease;
 }
 
 header p {
@@ -191,22 +196,13 @@ header p {
   transition: transform 0.3s ease; /* Плавный переход */
 }
 
-/* Анимация для заголовков */
-h1:hover {
-  transform: scale(1.1); /* Увеличение заголовка при наведении */
-}
-
-h2:hover {
-  color: #d8a3ff;
-}
-
 /* Кнопки */
 .cta-button {
   background-color: #a370f7;
   color: #000;
   padding: 10px 20px;
   text-decoration: none;
-  border: 3px solid #8a50d8; /* Тёмно-сиреневая граница */
+  border: 5px solid #8a50d8; /* Тёмно-сиреневая граница */
   transition: all 0.3s ease;
   font-size: 0.9em;
 }
@@ -218,47 +214,23 @@ h2:hover {
   transform: scale(1.1); /* Увеличение кнопки при наведении */
 }
 
-/* About Section */
-.about {
-  padding: 30px;
-  background-color: #2a2a2a;
-  border: 3px dashed #a370f7; /* Сиреневая пунктирная граница */
-  margin: 20px 0;
-  transition: transform 0.3s ease; /* Плавный переход */
-}
-
-
 h2 {
   font-size: 2.2em;
   color: #a370f7;
   text-shadow: 1px 1px 0px #000;
 }
 
-/* Projects Section */
-.projects {
-  padding: 30px;
-  background-color: #333;
-  margin: 20px 0;
-}
 
-.project {
-  background-color: #444;
-  padding: 20px;
-  margin: 15px 0;
-  border: 3px solid #a370f7;
-  box-shadow: 0px 0px 5px 1px #a370f7;
-  transition: transform 0.3s ease; /* Плавный переход */
-}
 
 .project:hover {
   transform: scale(1.02); /* Увеличение проекта при наведении */
 }
 
 /* Technologies Section */
-.technologies {
+.technologies, .about, .projects, .contact {
   padding: 30px;
   background-color: #2a2a2a;
-  border: 3px solid #a370f7;
+  border: 5px solid #a370f7;
   margin: 20px 0;
 }
 
@@ -271,19 +243,11 @@ li {
   font-size: 1.1em;
 }
 
-/* Contact Section */
-.contact {
-  padding: 30px;
-  background-color: #333;
-  border-top: 3px dotted #a370f7;
-  margin: 20px 0;
-}
-
 .contact-info a {
   color: #a370f7;
   text-decoration: none;
   padding: 8px 12px;
-  border: 2px solid #a370f7;
+  border: 5px solid #a370f7;
   transition: all 0.3s ease;
   font-size: 1em;
 }
